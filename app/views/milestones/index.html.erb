@@ -1,0 +1,13 @@
+
+ <h1>Welcome <%= current_user.name.capitalize %></h1> 
+
+ <%= link_to  "logout", logout_path %> 
+ <br>
+
+<%= button_to  "Set a New Milestone", new_milestone_path, :action => 'get', :method => "get" %>   
+
+<% @milestones.each do |ms| %>
+
+    <h3><a href="/milestones/<%= ms.id %>"><%= ms.title %></a></h3>
+   
+<% end %>   

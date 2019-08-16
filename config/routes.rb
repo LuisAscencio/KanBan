@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '/login' => 'sessions#new'
+  post '/sessions' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  resources :users, only: [:index, :show, :new, :create, :edit, :update]
+  resources :milestones, only: [:index, :show, :new, :create, :edit, :update]
+  resources :tasks, only: [:index, :show, :new, :create, :edit, :update]
+  resources :subtasks, only: [:index, :show, :new, :create, :edit, :update]
+
+  root 'milestones#index'
+
 end
