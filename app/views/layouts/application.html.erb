@@ -5,12 +5,34 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700,800,900&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
+
+  <nav class="navbar sticky-top navbar-light bg-light">
+    <a href="/"><img src="http://plug.nyc/wp-content/uploads/2019/08/kanban-logo.png" alt="kanban logo" class="nav-logo"></a>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/milestones">Milestones</a>
+      </li>
+      <li class="nav-item">
+        <% if current_user %>
+        <%= link_to  "Logout", logout_path, class: "nav-link active" %>
+        <% end %>  
+      </li>
+      
+    </ul> 
+  </nav>
+
     <%= yield %>
   </body>
 </html>

@@ -5,3 +5,24 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+
+.image-cropper {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.index-user-prof-pic {
+  display: inline;
+  margin: 0 auto;
+  margin-left: 0%;
+  height: 100%;
+  width: auto;
+}
+
+.nav-logo {
+  height: 75px;
+  width: auto;
+}

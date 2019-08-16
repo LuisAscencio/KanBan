@@ -8,12 +8,12 @@
 <%= f.label :title%>
 <%= f.text_field :title%>
 <%= f.label :priority%>
-<%=f.select :priority, [["low", 1], ["medium", 2], ["high",3]]  %>
+<%=f.select :priority, [["Low", 1], ["Medium", 2], ["High",3]]  %>
 <%= f.hidden_field :completed?, :value => false %>
 <%= f.label :due_date%>
 <%= f.hidden_field :milestone_id, :value => session[:milestone_id] %>
 <%= f.text_field :due_date%>
-<%= f.submit :submit %>
+<%= f.submit :submit, :class => "btn btn-primary" %>
 <% end %>   
 <br>
 <%= link_to  "Back to Tasks", tasks_path %>

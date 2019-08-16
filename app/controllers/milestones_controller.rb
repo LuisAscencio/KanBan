@@ -4,6 +4,7 @@ class MilestonesController < ApplicationController
 
     def index
         @milestones = Milestone.all
+ 
     end
 
     def new
@@ -60,6 +61,7 @@ class MilestonesController < ApplicationController
     def completed_params
         params.require(:completed?).permit(:completed?)
     end
+
 
     # def find_milestone
     #     @milestone = Milestone.find_by(current_user)

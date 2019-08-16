@@ -5,8 +5,8 @@
 <h4><%= @milestone.due_date %></h4>
 
 
-<%= button_to  "Add task", new_milestone_task_path(@milestone, @task), method: 'get' %>
+<%= button_to  "Add task", new_milestone_task_path(@milestone, @task), method: 'get', :class => "btn btn-primary" %>
 
-  <%= button_to 'Delete Milestone', milestone_path(@milestone), method: 'delete' %>
+<%= button_to 'Delete Milestone', milestone_path(@milestone), method: 'delete', class: "btn btn-danger" %>
 
 <%= link_to  "Back to Milestones", root_path %> 

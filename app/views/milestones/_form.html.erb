@@ -8,10 +8,10 @@
 <%= f.label :title%>
 <%= f.text_field :title%>
 <%= f.label :category%>
-<%= f.text_field :category%>
+<%= f.select :category, ["General", "Exercise", "Diet", "Career", "Other"], prompt: true %>
 <%= f.hidden_field :completed?, :value => false %>
 <%= f.label :due_date%>
 <%= f.hidden_field :user_id, :value => current_user.id %>
 <%= f.text_field :due_date%>
-<%= f.submit :submit %>
+<%= f.submit :submit, :class => "btn btn-primary" %>
 <% end %>   
