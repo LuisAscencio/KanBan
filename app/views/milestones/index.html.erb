@@ -7,7 +7,7 @@
 <%= button_to  "Set a New Milestone", new_milestone_path, :action => 'get', :method => "get" %>   
 
 <% @milestones.each do |ms| %>
-
+<% if ms.user_id == current_user.id %>
     <h3><a href="/milestones/<%= ms.id %>"><%= ms.title %></a></h3>
-   
+    <% end %>   
 <% end %>   
