@@ -1,0 +1,19 @@
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+    <p><%= error %></p>
+    <% end %>
+<% end %>
+
+<%= form_for(@task) do |f| %>
+<%= f.label :title%>
+<%= f.text_field :title%>
+<%= f.label :priority%>
+<%=f.select :priority, [["low", 1], ["medium", 2], ["high",3]]  %>
+<%= f.hidden_field :completed?, :value => false %>
+<%= f.label :due_date%>
+<%= f.hidden_field :milestone_id, :value => session[:milestone_id] %>
+<%= f.text_field :due_date%>
+<%= f.submit :submit %>
+<% end %>   
+<br>
+<%= link_to  "Back to Tasks", tasks_path %>

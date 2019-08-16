@@ -13,13 +13,16 @@ class MilestonesController < ApplicationController
     def create
         @milestone = Milestone.create(milestone_params)
         if @milestone.valid?
-            redirect_to milestones_path
+            @task = Task.new
+            redirect_to new_milestone_task_path(@milestone, @task)
         else
             flash[:errors] = @milestone.errors.full_messages
             redirect_to new_milestone_path
         end
 
     end
+
+
 
     def edit
 
@@ -28,6 +31,7 @@ class MilestonesController < ApplicationController
     def update
         @milestone = Milestone.find_by(current_user).update(completed_params)
         if @milestone.valid?
+
             redirect_to milestones_path
         else
             flash[:errors] = @milestone.errors.full_messages
@@ -37,6 +41,13 @@ class MilestonesController < ApplicationController
 
    def show
        @milestone = Milestone.find(params[:id])
+        @task = Task.new
+   end
+
+   def destroy
+       @milestone = Milestone.find(params[:id])
+       @milestone.destroy
+        redirect_to milestones_path
    end
    
     

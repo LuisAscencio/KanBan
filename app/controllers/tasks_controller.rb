@@ -1,4 +1,33 @@
 class TasksController < ApplicationController
 
 
+
+
+    def index
+        @tasks = Task.all
+    end
+
+    def new
+        @task = Task.new
+    end
+
+
+    def create 
+     
+        @task = Task.create(task_params)
+        if @task.valid?
+            redirect_to tasks_path
+        else
+            flash[:errors] = @task.errors.full_messages
+            redirect_to new_task_path
+        end
+
+    end
+    
+private
+
+    def task_params
+        params.require(:task).permit(:title, :priority, :due_date, :completed?, :milestone_id)
+    end
+
 end

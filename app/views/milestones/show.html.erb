@@ -1,6 +1,12 @@
+<h1><%= @milestone.user.name %></h1>   
 <h1><%= @milestone.title %></h1>
 <h3><%= @milestone.category %></h3>
 <h3><%= @milestone.completed? %></h3>
 <h4><%= @milestone.due_date %></h4>
+
+
+<%= button_to  "Add task", new_milestone_task_path(@milestone, @task), method: 'get' %>
+
+  <%= button_to 'Delete Milestone', milestone_path(@milestone), method: 'delete' %>
 
 <%= link_to  "Back to Milestones", root_path %> 
