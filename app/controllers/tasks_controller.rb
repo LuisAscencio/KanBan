@@ -12,7 +12,7 @@ class TasksController < ApplicationController
     def create 
      
         @task = Task.create(task_params)
-        if @task.valid?
+        if @task.valid?&& Task.all.count<3
             redirect_to tasks_path
         else
             flash[:errors] = @task.errors.full_messages

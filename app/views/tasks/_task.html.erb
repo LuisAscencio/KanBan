@@ -13,6 +13,7 @@
 <%= f.label :due_date%>
 <%= f.hidden_field :milestone_id, :value => params[:milestone_id] %>
 <%= f.text_field :due_date%>
+<%= collection_select(:task, :milestone_id, Milestone.all, :id, :title, prompt: true) %>
 <%= f.submit :submit, :class => "btn btn-primary" %>
 <% end %>   
 <br>
