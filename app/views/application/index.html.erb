@@ -3,7 +3,7 @@
          <div class="image-cropper">
              <img src="http://tinygraphs.com/squares/#{current_user.name}" class="index-user-prof-pic" alt="">  
          </div>
-      <h1 class="display-4" style="margin-left: 10px; margin-top: 20px; margin-bottom: 10px;">Welcome <%= current_user.name.capitalize %></h1>  
+      <h1 class="display-4 index-header-text" style="margin-left: 10px; margin-top: 20px; margin-bottom: 10px;">Welcome <%= current_user.name.capitalize %></h1>  
     </div>
          <p class="lead" style="padding: 1em;">You have <%= current_user.milestones.count %> outstanding <%= current_user.milestones.count < 2 ? "task" : "tasks"  %>  to complete.</p>
     <%= button_to  "Create a New Milestone", new_milestone_path, :action => 'get', :method => "get", :class => "btn btn-primary" %>   

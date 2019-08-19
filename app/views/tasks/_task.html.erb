@@ -11,7 +11,7 @@
 <%=f.select :priority, [["Low", 1], ["Medium", 2], ["High",3]]  %>
 <%= f.hidden_field :completed?, :value => false %>
 <%= f.label :due_date%>
-<%= f.hidden_field :milestone_id, :value => session[:milestone_id] %>
+<%= f.hidden_field :milestone_id, :value => params[:milestone_id] %>
 <%= f.text_field :due_date%>
 <%= f.submit :submit, :class => "btn btn-primary" %>
 <% end %>   

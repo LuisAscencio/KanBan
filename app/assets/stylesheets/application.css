@@ -78,3 +78,18 @@ input[type="radio"] {
     flex-direction: column;
   }
 }
+
+@media (max-width: 550px) {
+  .display-4 {
+    font-size: 40px;
+    margin-left: 10px;
+    margin-top: 33px;
+    margin-bottom: 10px;
+  }
+  .index-header-text {
+    font-size: 40px;
+    margin-left: 10px;
+    margin-top: 33px;
+    margin-bottom: 10px;
+  }
+}
