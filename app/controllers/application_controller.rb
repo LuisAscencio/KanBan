@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    before_action :authentication_required, only: [:index]
 
     def authentication_required
         if !logged_in?
