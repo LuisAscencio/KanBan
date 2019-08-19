@@ -2,15 +2,17 @@ class TasksController < ApplicationController
 
     def index
         @tasks = Task.all
+        @user_tasks = current_user.tasks 
+    
     end
 
     def new
         @task = Task.new
+        @user_milestones = current_user.milestones
     end
 
 
     def create 
-     
         @task = Task.create(task_params)
         if @task.valid?
             redirect_to tasks_path

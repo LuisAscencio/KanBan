@@ -13,11 +13,11 @@
  <br>
 
 
-<div class="mx-auto container-fluid" style="width: 475px; padding: 3em;" >
+<div class="mx-auto container-fluid" style="width: 500px; padding: 3em;" >
     <h3><%= current_user.milestones.count >= 1 ? "M I L E S T O N E S" : "Please add some Milestones"  %> </h3>
 </div>
 
-
+<% if current_user.milestones.count > 1 %>
 <div class="mx-auto container-fluid index-milestone-container" style="width: 475px; padding: 3em; ">
  <% @milestones.each do |ms| %>
 <% if ms.user_id == current_user.id %>
@@ -31,3 +31,4 @@
     <% end %>   
 <% end %>  
 </div>
+<% end  %>

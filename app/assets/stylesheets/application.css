@@ -73,6 +73,21 @@ input[type="radio"] {
   color: #ffffff;
 }
 
+.show-container {
+  border-radius: 5px;
+  padding: 2em;
+}
+
+.nav-link {
+  color: #ee6c6c;
+  font-weight: 800;
+}
+
+.nav-link:hover {
+  color: #ee6c6c;
+  text-shadow: 0.5px 0.5px 1px #ee6c6c;
+}
+
 @media (max-width: 1200px) {
   .row {
     flex-direction: column;

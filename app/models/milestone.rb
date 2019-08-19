@@ -1,5 +1,6 @@
 class Milestone < ApplicationRecord
-  belongs_to :user
+
+  belongs_to :user, dependent: :destroy
   has_many :tasks
   has_many :subtasks, through: :tasks
 

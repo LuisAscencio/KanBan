@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :milestones
+    has_many :milestones, dependent: :destroy
     has_many :tasks, through: :milestones
     has_many :subtasks, through: :tasks
 #User account creation validations

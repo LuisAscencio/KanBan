@@ -1,11 +1,31 @@
+<div class="jumbotron">
+    <div class="d-flex">
+         <div class="image-cropper">
+             <img src="http://tinygraphs.com/squares/#{current_user.name}" class="index-user-prof-pic" alt="">  
+         </div>
+      <h1 class="display-4" style="margin-left: 10px; margin-top: 20px; margin-bottom: 10px;">Welcome <%= current_user.name.capitalize %></h1>  
+    </div>
+         <p class="lead" style="padding: 1em;">You have <%= current_user.tasks.count %> outstanding <%= current_user.tasks.count < 2 ? "task" : "tasks"  %>  to complete.</p>
+    <%= button_to  "Create a New Task", new_task_path, :action => 'get', :method => "get", :class => "btn btn-primary" %>   
+ </div>
 
-<h1>Tasks</h1>
+ <br>
 
-<% @tasks.each do |task| %>
 
-<h3>
-    
-    <%= task.title %>
+<div class="mx-auto container-fluid" style="width: 475px; padding: 3em;" >
+    <h3><%= current_user.tasks.count >= 1 ? "T A S K S" : "Please add some Tasks"  %> </h3>
+</div>
 
-</h3>
+<% if current_user.tasks.count > 1 %>
+<div class="mx-auto container-fluid index-milestone-container" style="width: 475px; padding: 3em; ">
+ <% @user_tasks.each do |t| %>
+    <div class="d-flex" style="margin-top: 0.5em; margin-bottom: 1em;">
+     <input type="radio" value="completed?" class="completed-checkbox"></input>
+    <h3><a href="/tasks/<%= t.id %>"><%= t.title %></a></h3>
+    </div>
+    <h5><%= t.due_date %> </h5>
+    <%= link_to  "View Tasks >>", task_path(t) %>
+    <hr class="my-4">
+<% end %>  
+</div>
 <% end %>

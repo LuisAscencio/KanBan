@@ -4,16 +4,49 @@
     <% end %>
 <% end %>
 
-<%= form_for(@task) do |f| %>
-<%= f.label :title%>
-<%= f.text_field :title%>
-<%= f.label :priority%>
-<%=f.select :priority, [["Low", 1], ["Medium", 2], ["High",3]]  %>
-<%= f.hidden_field :completed?, :value => false %>
-<%= f.label :due_date%>
-<%= f.hidden_field :milestone_id, :value => params[:milestone_id] %>
-<%= f.text_field :due_date%>
-<%= f.submit :submit, :class => "btn btn-primary" %>
-<% end %>   
+    <%= form_for(@task, class: "mx-auto") do |f| %>   
+        <div class="form-group">
+          <%= f.text_field :title, :placeholder => "What do you want to accomplish?", :class => "form-control"%>
+        </div>
+        <%= f.hidden_field :completed?, :value => false %>
+        
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Priority</label>
+        </div>
+         <select value="task[priority]" class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="low" name="low">Low</option>
+            <option value="medium" name="medium">Medium</option>
+            <option value="high" name="high">High</option>
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Milestone</label>
+        </div>
+         <select value="task[milestone_id]" class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <%  @user_milestones.each do |ms| %>
+            <option value="<%= ms.id %>" name="task[milestone_id]"><%= ms.title %></option>
+        <% end %>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <%= f.text_field :due_date, :placeholder => "When do you want to accomplish this goal?", :class => "form-control"%>
+    </div>
+        <div class="d-flex justify-content-between">
+        <%= f.submit :submit, :class => "btn btn-primary" %>
+        <%= link_to  "Back to Tasks", tasks_path %>
+        </div>
+    <% end %>   
 <br>
-<%= link_to  "Back to Tasks", tasks_path %>
+
+
+
+
+
+
