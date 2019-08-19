@@ -6,6 +6,7 @@ class TasksController < ApplicationController
 
     def new
         @task = Task.new
+        @user_milestones = current_user.milestones
     end
 
 

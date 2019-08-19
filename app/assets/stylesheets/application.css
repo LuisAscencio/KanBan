@@ -73,6 +73,10 @@ input[type="radio"] {
   color: #ffffff;
 }
 
+.login-form {
+  margin-top: 2em;
+}
+
 @media (max-width: 1200px) {
   .row {
     flex-direction: column;

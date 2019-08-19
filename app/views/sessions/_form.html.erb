@@ -1,0 +1,22 @@
+<% if flash[:errors] %>
+<% flash[:errors].each do |error| %>
+<p><%= error %></p>
+<% end %>
+<% end %>
+
+<div class="container">
+    <%= form_tag(sessions_path, :class => "login-form") do %>
+<div class="form-group">
+    <%= text_field_tag :username, nil, placeholder: "Username", :class => "form-control"%>
+</div>
+<div class="form-group">
+<%= password_field_tag :password, nil, placeholder: "Password", :class => "form-control"%>
+</div>
+<div class="d-flex justify-content-between">
+    <%= submit_tag :submit, :class => "btn btn-primary" %>
+    <% end %>
+    <%= link_to  "or Sign Up", new_user_path, :class => "d-flex justify-content-end" %>
+</div>
+
+</div>
+
