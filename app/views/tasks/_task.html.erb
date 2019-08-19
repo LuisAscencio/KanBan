@@ -15,17 +15,6 @@
             <label class="input-group-text" for="inputGroupSelect01">Priority</label>
         </div>
             <%=f.select :priority, [["Low", 1], ["Medium", 2], ["High",3]], {}, :class => "custom-select" %>
-
-         <%
-=begin%>
- <select value="task[priority]" class="custom-select" id="inputGroupSelect01">
-            <option selected>Choose...</option>
-            <option value="low" name="low">Low</option>
-            <option value="medium" name="medium">Medium</option>
-            <option value="high" name="high">High</option>
-        </select> 
-<%
-=end%>
     </div>
 
     <div class="input-group mb-3">
@@ -33,19 +22,6 @@
             <label class="input-group-text" for="inputGroupSelect01">Milestone</label>
         </div>
             <%= collection_select(:task, :milestone_id, @user_milestones, :id, :title, { prompt: true }, { class: "custom-select"}) %>
-
-         <%
-=begin%>
- <select value="task[milestone_id]" class="custom-select" id="inputGroupSelect01">
-            <option selected>Choose...</option>
-            <%  @user_milestones.each do |ms| %>
-            <option value="<%= ms.id %>" ><%= ms.title %></option>
-        <% end %> 
-        </select>
-<%
-=end%>
-
-        
     </div>
 
     <div class="form-group">
