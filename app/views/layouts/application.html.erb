@@ -18,14 +18,18 @@
   <nav class="navbar sticky-top navbar-light bg-light">
     <a href="/"><img src="http://plug.nyc/wp-content/uploads/2019/08/kanban-logo.png" alt="kanban logo" class="nav-logo"></a>
     <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link active" href="/">Home</a>
-      </li>
-      <li class="nav-item">
+    <% if current_user %>
+    <li class="nav-item">
         <a class="nav-link active" href="/milestones">Milestones</a>
       </li>
       <li class="nav-item">
-        <% if current_user %>
+        <a class="nav-link active" href="/tasks">Tasks</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Subtasks</a>
+      </li>
+      <li class="nav-item">
+        
         <%= link_to  "Logout", logout_path, class: "nav-link active" %>
         <% end %>  
       </li>

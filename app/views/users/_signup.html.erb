@@ -4,12 +4,18 @@
     <% end %>
 <% end %>
 
-<%= form_for(@user) do |f| %>
-<%= f.label :name%>
-<%= f.text_field :name%>
-<%= f.label :username%>
-<%= f.text_field :username%>
-<%= f.label :password%>
-<%= f.text_field :password%>
+<%= form_for(@user, class: "sign-up-form") do |f| %>
+<div class="form-group">
+<%= f.text_field :name, :placeholder => "First Name", :class => "form-control"%>
+</div>
+<div class="form-group">
+<%= f.text_field :username, :placeholder => "Username", :class => "form-control"%>
+</div>
+<div class="form-group">
+<%= f.text_field :password, :placeholder => "Password", :class => "form-control"%>
+</div>
+<div class="d-flex justify-content-between">
 <%= f.submit :submit, :class => "btn btn-primary" %>
 <% end %>
+<%= link_to  "or Login", login_path %>  
+</div>

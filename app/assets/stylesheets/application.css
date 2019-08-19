@@ -3,6 +3,7 @@
 }
 
 body {
+  background-color: #edecec;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -25,4 +26,55 @@ body {
 .nav-logo {
   height: 75px;
   width: auto;
+}
+
+.jumbotron {
+  /* background-image: url("http://plug.nyc/wp-content/uploads/2019/08/rising-sun.svg");
+  background-size: cover;
+  background-position-y: -500px;
+  background-position-x: -200px;
+  overflow: hidden;
+  height: 130%;
+  width: 130%; */
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(255, 255, 255),
+    rgb(213, 213, 213)
+  );
+}
+
+.display-4 {
+  font-weight: 900;
+}
+
+.lead {
+  font-weight: 700;
+}
+
+.index-milestone-container {
+  background-color: #ffffff;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  height: 30px;
+  width: 30px;
+}
+
+.index-milestone-container {
+  border-radius: 5px;
+}
+
+.ms-card {
+  background-color: rgb(79, 242, 218);
+}
+
+.card-link {
+  color: #ffffff;
+}
+
+@media (max-width: 1200px) {
+  .row {
+    flex-direction: column;
+  }
 }

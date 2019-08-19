@@ -1,0 +1,46 @@
+<div class="jumbotron">
+    <div class="d-flex">
+         <div class="image-cropper">
+             <img src="http://tinygraphs.com/squares/#{current_user.name}" class="index-user-prof-pic" alt="">  
+         </div>
+      <h1 class="display-4" style="margin-left: 10px; margin-top: 20px; margin-bottom: 10px;">Welcome <%= current_user.name.capitalize %></h1>  
+    </div>
+         <p class="lead" style="padding: 1em;">You have <%= current_user.milestones.count %> outstanding <%= current_user.milestones.count < 2 ? "task" : "tasks"  %>  to complete.</p>
+    <%= button_to  "Create a New Milestone", new_milestone_path, :action => 'get', :method => "get", :class => "btn btn-primary" %>   
+ </div>
+
+<div class="mx-auto index-cta-container">
+     <div class="row">
+    <div class="col">
+      <div class="mx-auto card text-white bg-primary mb-3 ms-card" style="max-width: 24rem;">
+  <div class="card-header"><%= current_user.milestones.count %> milestones to complete. </div>
+  <div class="card-body">
+    <h5 class="card-title">M I L E S T O N E S</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%= link_to  "View Your Milestones >>", milestones_path, class: "card-link" %>
+  </div>
+</div>
+    </div>
+    <div class="col">
+      <div class="mx-auto card text-white bg-info mb-3" style="max-width: 24rem;">
+  <div class="card-header"><%= current_user.tasks.count %> tasks to complete.</div>
+  <div class="card-body">
+    <h5 class="card-title">T A S K S</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%= link_to  "View Your Tasks >>", tasks_path, class: "card-link" %>    
+  </div>
+</div>
+    </div>
+    <div class="col">
+      <div class="mx-auto card text-white bg-dark mb-3" style="max-width: 24rem;">
+  <div class="card-header"><%= current_user.subtasks.count %> subtasks to complete.</div>
+  <div class="card-body">
+    <h5 class="card-title">S U B T A S K S</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%= link_to  "View Your Subtasks >>", milestones_path, class: "card-link" %>
+    
+  </div>
+</div>
+    </div>
+  </div>
+</div>

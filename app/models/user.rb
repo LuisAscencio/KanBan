@@ -5,7 +5,6 @@ class User < ApplicationRecord
 #User account creation validations
     validates :name, length: {in: 3..25}
     validates :name, :presence => true
-    validates :name, uniqueness: true
     validates :username, :presence => true
     validates :username, uniqueness: true
     validates :password, :presence => true

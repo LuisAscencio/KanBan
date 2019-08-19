@@ -1,22 +1,33 @@
 
  <div class="jumbotron">
-    <div class="image-cropper">
-     <img src="http://tinygraphs.com/squares/#{current_user.name}" class="index-user-prof-pic" alt="">  
+    <div class="d-flex">
+         <div class="image-cropper">
+             <img src="http://tinygraphs.com/squares/#{current_user.name}" class="index-user-prof-pic" alt="">  
+         </div>
+      <h1 class="display-4" style="margin-left: 10px; margin-top: 20px; margin-bottom: 10px;">Welcome <%= current_user.name.capitalize %></h1>  
     </div>
-    <h1 class="display-4">Welcome <%= current_user.name.capitalize %></h1>  
-     <p class="lead">You have #{<%=  %>} outstanding tasks to complete.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+         <p class="lead" style="padding: 1em;">You have <%= current_user.milestones.count %> outstanding <%= current_user.milestones.count < 2 ? "task" : "tasks"  %>  to complete.</p>
     <%= button_to  "Create a New Milestone", new_milestone_path, :action => 'get', :method => "get", :class => "btn btn-primary" %>   
  </div>
 
  <br>
 
 
+<div class="mx-auto container-fluid" style="width: 475px; padding: 3em;" >
+    <h3><%= current_user.milestones.count >= 1 ? "M I L E S T O N E S" : "Please add some Milestones"  %> </h3>
+</div>
 
 
+<div class="mx-auto container-fluid index-milestone-container" style="width: 475px; padding: 3em; ">
  <% @milestones.each do |ms| %>
 <% if ms.user_id == current_user.id %>
+    <div class="d-flex" style="margin-top: 0.5em; margin-bottom: 1em;">
+     <input type="radio" value="completed?" class="completed-checkbox"></input>
     <h3><a href="/milestones/<%= ms.id %>"><%= ms.title %></a></h3>
+    </div>
+    <h5><%= ms.due_date %> </h5>
+    <%= link_to  "View Tasks >>", milestone_path(ms) %>
+    <hr class="my-4">
     <% end %>   
-<% end %>    
+<% end %>  
+</div>
