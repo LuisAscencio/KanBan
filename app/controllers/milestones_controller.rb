@@ -22,24 +22,28 @@ class MilestonesController < ApplicationController
         end
 
     end
-
-
-
+    
     def edit
         @milestone = Milestone.find(params[:id])
     end
+
+def update
+    @milestone = Milestone.find(params[:id])
+    @milestone.update_attributes(milestone_params)
+     if @milestone.valid?
+     redirect_to milestone_path(@milestone.id)
+     else
+    flash[:errors] = @milestone.errors.full_messages 
+     redirect_to edit_milestone_path
+     end
+end
+
+
+
+  
     
 
-    def update
-        @milestone = Milestone.find_by(current_user).update(completed_params)
-        if @milestone.valid?
-
-            redirect_to milestones_path
-        else
-            flash[:errors] = @milestone.errors.full_messages
-            redirect_to new_milestone_path
-        end
-    end
+    
 
    def show
        @milestone = Milestone.find(params[:id])

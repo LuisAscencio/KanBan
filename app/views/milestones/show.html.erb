@@ -21,13 +21,12 @@
 
     <div class="d-flex justify-content-between">
     <%= button_to  "Add task", new_milestone_task_path(@milestone, @task), method: 'get', :class => "btn btn-primary" %>
-
+    <%= button_to  "Edit", edit_milestone_path(@milestone), method: "get", class: "btn btn-secondary", style: "width: 6em;" %>
     <%= button_to 'Delete Milestone', milestone_path(@milestone), method: 'delete', class: "btn btn-danger" %>
     </div>
     <br>
-    <%= link_to  "Back to Milestones", root_path %> 
+    <%= link_to  "Back to Milestones", root_path,  class: "link-to-show"%> 
 </div>   
-
 
 
 
