@@ -14,7 +14,7 @@
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Priority</label>
         </div>
-            <%=f.select :priority, [["Low", 1], ["Medium", 2], ["High",3]], {}, :class => "custom-select" %>
+            <%=f.select :priority, ["Low","Medium","High"], {}, :class => "custom-select" %>
     </div>
 
     <div class="input-group mb-3">
@@ -29,7 +29,7 @@
     </div>
         <div class="d-flex justify-content-between">
         <%= f.submit :submit, :class => "btn btn-primary" %>
-        <%= link_to  "Back to Tasks", tasks_path %>
+        <%= link_to  "Add Subtask", new_subtask_path %>
         </div>
     <% end %>   
 <br>

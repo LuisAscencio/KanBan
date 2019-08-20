@@ -5,7 +5,7 @@
          </div>
       <h1 class="display-4 index-header-text" style="margin-left: 10px; margin-top: 20px; margin-bottom: 10px;">Welcome <%= current_user.name.capitalize %></h1>  
     </div>
-         <p class="lead" style="padding: 1em;">You have <%= current_user.milestones.count %> outstanding <%= current_user.milestones.count == 1 ? "task" : "tasks"  %>  to complete.</p>
+         <p class="lead" style="padding: 1em;">You have <%= current_user.milestones.count %> outstanding <%= current_user.milestones.count == 1 ? "milestone" : "milestones"  %>  to complete.</p>
     <%= button_to  "Create a New Milestone", new_milestone_path, :action => 'get', :method => "get", :class => "btn btn-primary" %>   
  </div>
 
@@ -37,7 +37,7 @@
   <div class="card-body">
     <h5 class="card-title">S U B T A S K S</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <%= link_to  "View Your Subtasks >>", milestones_path, class: "card-link" %>
+    <%= link_to  "View Your Subtasks >>", subtasks_path, class: "card-link" %>
     
   </div>
 </div>

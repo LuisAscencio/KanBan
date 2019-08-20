@@ -1,0 +1,36 @@
+<div class="jumbotron">
+    <div class="d-flex">
+          <div class="image-cropper">
+            <img src="http://tinygraphs.com/squares/#{current_user.name}" class="index-user-prof-pic" alt="">
+           </div>
+         <h1 class="display-4 header-welcome-text">Welcome <%= current_user.name.capitalize %></h1>
+     </div> 
+        <p class="lead" style="padding: 1em;">You have <%= current_user.subtasks.count %> outstanding <%= current_user.subtasks.count == 1 ? "subtask" : "subtasks" %> to complete.</p>
+     <%= button_to  "Create a New Subtask", new_subtask_path, method: "get", class: "btn btn-primary" %>
+</div>
+
+<% @user_subtasks.each do |subtask| %>
+    
+<div class="card subtask-container">
+  <h5 class="card-header" 
+  style="
+        <% case subtask.task.priority %>
+        <% when 'low' %>
+           <%= 'background-color: #70f4b6' %>
+        <% when 'medium' %>
+           <%= "background-color: #ccf470"%>
+        <% when 'high' %>
+           <%= 'background-color: #ee6c6c'%>
+        <% end %> ">
+  
+  <%= subtask.task.priority %></h5>
+  <div class="card-body">
+    <h5 class="card-title"><%= subtask.title %></h5>
+    <p class="card-text">Created: <%= subtask.created_at.strftime("%m-%d-%Y")%></p>
+    <p class="card-text">Due: <%= subtask.created_at.strftime("%m-%d-%Y")%></p>
+    <%= link_to  "View Subtask", subtasks_path, method: "get", class: "btn btn-primary" %>
+  </div>
+</div>
+  <% end %>
+
+ 

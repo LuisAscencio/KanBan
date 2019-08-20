@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   resources :subtasks, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   resources :milestones do 
-    resources :tasks, only: [:index, :new, :create]
+    resources :tasks, only: [:index, :show, :new, :create]
   end
 
   resources :tasks do 
-    resources :subtasks, only: [:index, :new, :create]
+    resources :subtasks, only: [:index, :show, :new, :create]
   end
 
   root 'application#index'
