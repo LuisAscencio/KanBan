@@ -26,8 +26,9 @@ class MilestonesController < ApplicationController
 
 
     def edit
-
+        @milestone = Milestone.find(params[:id])
     end
+    
 
     def update
         @milestone = Milestone.find_by(current_user).update(completed_params)
