@@ -9,8 +9,13 @@
      <%= button_to  "Create a New Subtask", new_subtask_path, method: "get", class: "btn btn-primary" %>
 </div>
 
-<% @user_subtasks.each do |subtask| %>
-    
+<div class="mx-auto container-fluid" style="width: 475px; padding: 1em; margin-bottom: 0;" >
+    <h3><%= current_user.tasks.count >= 1 ? "S U B T A S K S" : "Please add some Subtasks"  %> </h3>
+</div>
+
+<% if current_user.tasks.count > 1 %>
+
+<% @user_subtasks.each do |subtask| %>   
 <div class="card subtask-container">
   <h5 class="card-header" 
   style="
@@ -32,5 +37,6 @@
   </div>
 </div>
   <% end %>
+<% end %>   
 
  

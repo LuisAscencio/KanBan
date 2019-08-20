@@ -4,7 +4,7 @@ class MilestonesController < ApplicationController
 
     def index
         @milestones = Milestone.all
- 
+        @user_milestones = current_user.milestones
     end
 
     def new

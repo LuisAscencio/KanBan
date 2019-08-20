@@ -16,12 +16,11 @@
     <h3><%= current_user.milestones.count >= 1 ? "M I L E S T O N E S" : "Please add some Milestones"  %> </h3>
 </div>
 
-<% if current_user.milestones.count > 1 %>
+<% if current_user.milestones.count > 0 %>
 
-<% @milestones.each do |ms| %>
-<% if ms.user_id == current_user.id %>
+<% @user_milestones.each do |ms| %>
 <div class="card subtask-container">
-  <h5 class="card-header">  <%=ms.category%></h5>
+  <h5 class="card-header"> <%=ms.category%></h5>
   <div class="card-body">
     <h5 class="card-title"><%= ms.title %></h5>
     <p class="card-text">Created: <%= ms.created_at.strftime("%m/%d/%Y")%></p>
@@ -35,6 +34,6 @@
     <%= link_to  "View Task", milestone_path(ms.id), method: "get", class: "btn btn-primary" %>
   </div>
 </div>
-  <% end %>
+
    <% end %>
      <% end %>
