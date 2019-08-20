@@ -17,12 +17,6 @@
             <%=f.select :priority, ["Low","Medium","High"], {}, :class => "custom-select" %>
     </div>
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Milestone</label>
-    </div> 
-
-
     <div class="form-group">
         <%= f.text_field :due_date, :placeholder => "When do you want to accomplish this task?", :class => "form-control"%>
     </div>
