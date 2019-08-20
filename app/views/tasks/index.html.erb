@@ -12,20 +12,33 @@
  <br>
 
 
-<div class="mx-auto container-fluid" style="width: 475px; padding: 3em;" >
+<div class="mx-auto container-fluid" style="width: 475px; padding: 1em; margin-bottom: 0;" >
     <h3><%= current_user.tasks.count >= 1 ? "T A S K S" : "Please add some Tasks"  %> </h3>
 </div>
 
+
+
 <% if current_user.tasks.count > 1 %>
-<div class="mx-auto container-fluid index-milestone-container" style="width: 475px; padding: 3em; ">
  <% @user_tasks.each do |t| %>
-    <div class="d-flex" style="margin-top: 0.5em; margin-bottom: 1em;">
-     <input type="radio" value="completed?" class="completed-checkbox"></input>
-    <h3><a href="/tasks/<%= t.id %>"><%= t.title %></a></h3>
-    </div>
-    <h5><%= t.due_date %> </h5>
-    <%= link_to  "View Tasks >>", task_path(t) %>
-    <hr class="my-4">
-<% end %>  
+<div class="card subtask-container">
+  <h5 class="card-header" 
+  style="
+        <% case t.priority %>
+        <% when 'Low' %>
+           <%= 'background-color: #70f4b6' %>
+        <% when 'Medium' %>
+           <%= "background-color: #ccf470"%>
+        <% when 'High' %>
+           <%= 'background-color: #ee6c6c'%>
+        <% end %> ">
+  
+  <%= t.priority %></h5>
+  <div class="card-body">
+    <h5 class="card-title"><%= t.title %></h5>
+    <p class="card-text">Created: <%= t.created_at.strftime("%m/%d/%Y")%></p>
+    <p class="card-text">Due: <%= t.due_date%></p>
+    <%= link_to  "View Subtask", subtasks_path, method: "get", class: "btn btn-primary" %>
+  </div>
 </div>
-<% end %>
+  <% end %>
+   <% end %>
