@@ -20,22 +20,14 @@
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Milestone</label>
-        </div>
-            <%= collection_select(:task, :milestone_id, @user_milestones, :id, :title, { prompt: true }, { class: "custom-select"}) %>
-    </div>
+    </div> 
+
 
     <div class="form-group">
         <%= f.text_field :due_date, :placeholder => "When do you want to accomplish this task?", :class => "form-control"%>
     </div>
         <div class="d-flex justify-content-between">
         <%= f.submit :submit, :class => "btn btn-primary" %>
-        <%= link_to  "Add Subtask", new_subtask_path %>
         </div>
     <% end %>   
 <br>
-
-
-
-
-
-

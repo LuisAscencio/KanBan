@@ -21,7 +21,7 @@
 
     <div class="d-flex justify-content-between">
     <%= button_to  "Add Subtask", new_task_subtask_path(@task, @subtask), method: 'get', :class => "btn btn-primary" %>
-
+    <%= button_to  "Edit", edit_task_path(@task), method: "get", class: "btn btn-secondary", style: "width: 6em;" %>
     <%= button_to 'Delete Task', task_path(@task), method: 'delete', class: "btn btn-danger" %>
     </div>
     <br>

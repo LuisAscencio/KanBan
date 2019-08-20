@@ -13,12 +13,29 @@ class TasksController < ApplicationController
 
     def create 
         @task = Task.create(task_params)
-        if @task.valid?&& Task.all.count<3
+        if @task.valid?
             redirect_to tasks_path
         else
             flash[:errors] = @task.errors.full_messages
             redirect_to new_task_path
         end
+    end
+
+
+    def edit
+     @task = Task.find(params[:id])
+    end
+
+
+    def update
+         @task = Task.find(params[:id])
+         @task.update_attributes(task_params)
+          if @task.valid?
+             redirect_to task_path(@task.id)
+         else
+            flash[:errors] = @task.errors.full_messages 
+         redirect_to edit_task_path
+      end
     end
 
     def show
