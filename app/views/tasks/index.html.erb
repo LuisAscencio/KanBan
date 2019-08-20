@@ -37,8 +37,17 @@
     <h5 class="card-title"><%= t.title %></h5>
     <p class="card-text">Created: <%= t.created_at.strftime("%m/%d/%Y")%></p>
     <p class="card-text">Due: <%= t.due_date%></p>
+    <% if t.completed? %>
+    <div><input type="checkbox"  disabled checked name="completed?" value="completed?"> Task completed?</div>
+    <% else %>
+        <div><input type="checkbox"  name="completed?" value="completed?"> Task completed?</div>
+    <% end %>
+    <p class="card-text"><% t.completed?%></p>
     <%= link_to  "View Subtask", subtasks_path, method: "get", class: "btn btn-primary" %>
   </div>
 </div>
   <% end %>
    <% end %>
+
+
+bu

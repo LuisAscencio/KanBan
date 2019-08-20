@@ -18,7 +18,11 @@
 </div>
 
 <% if current_user.milestones.count > 1 %>
-<div class="mx-auto container-fluid index-milestone-container" style="width: 475px; padding: 3em; ">
+
+
+
+ <%
+=begin%>
  <% @milestones.each do |ms| %>
 <% if ms.user_id == current_user.id %>
     <div class="d-flex" style="margin-top: 0.5em; margin-bottom: 1em;">
@@ -31,4 +35,29 @@
     <% end %>   
 <% end %>  
 </div>
-<% end  %>
+<% end  %> 
+<%
+=end%>
+
+
+
+<% @milestones.each do |ms| %>
+<% if ms.user_id == current_user.id %>
+<div class="card subtask-container">
+  <h5 class="card-header">  <%=ms.category%></h5>
+  <div class="card-body">
+    <h5 class="card-title"><%= ms.title %></h5>
+    <p class="card-text">Created: <%= ms.created_at.strftime("%m/%d/%Y")%></p>
+    <p class="card-text">Due: <%= ms.due_date%></p>
+    <% if ms.completed? %>
+    <div><input type="checkbox"  disabled checked name="completed?" value="completed?"> Task completed?</div>
+    <% else %>
+        <div><input type="checkbox"  name="completed?" value="completed?"> Milestone completed?</div>
+    <% end %>
+    <p class="card-text"><% ms.completed?%></p>
+    <%= link_to  "View Task", subtasks_path, method: "get", class: "btn btn-primary" %>
+  </div>
+</div>
+  <% end %>
+   <% end %>
+     <% end %>
