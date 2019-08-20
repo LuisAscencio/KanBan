@@ -21,6 +21,24 @@ class SubtasksController < ApplicationController
         end
     end 
 
+    def edit
+        @subtask = Subtask.find(params[:id])
+    end
+
+    def update
+        @subtask = Subtask.find(params[:id])
+        @subtask.update_attributes(subtask_params)
+         if @subtask.valid?
+         redirect_to subtask_path
+         else
+        flash[:errors] = @subtask.errors.full_messages 
+         redirect_to edit_subtask_path
+         end
+    end
+
+
+
+
     def show
         @subtask = Subtask.find(params[:id])
 

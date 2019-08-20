@@ -1,3 +1,4 @@
 <h2><%= @subtask.title %> </h2>
 
 <%= link_to  "Back to Subtasks", subtasks_path %>   
+    <%= button_to  "Edit", edit_subtask_path(@subtask), method: "get", class: "btn btn-secondary", style: "width: 6em;" %>

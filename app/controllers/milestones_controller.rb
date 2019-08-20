@@ -22,12 +22,6 @@ class MilestonesController < ApplicationController
         end
     end
 
-
-   def show
-        @milestone = Milestone.find(params[:id])
-        @task = Task.new
-    end
-
     def edit
         @milestone = Milestone.find(params[:id])
     end
@@ -43,6 +37,10 @@ class MilestonesController < ApplicationController
         end
     end
 
+   def show
+       @milestone = Milestone.find(params[:id])
+       @task = Task.new
+   end
 
    def destroy
        @milestone = Milestone.find(params[:id])
