@@ -2,8 +2,7 @@ class TasksController < ApplicationController
 
     def index
         @tasks = Task.all
-        @user_tasks = current_user.tasks 
-    
+        @user_tasks = current_user.tasks
     end
 
     def new
@@ -20,7 +19,10 @@ class TasksController < ApplicationController
             flash[:errors] = @task.errors.full_messages
             redirect_to new_task_path
         end
+    end
 
+    def show
+        @task = Task.find(params[:id])
     end
     
 private

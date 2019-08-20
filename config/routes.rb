@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :new, :create]
   end
 
+  resources :tasks do 
+    resources :subtasks, only: [:index, :new, :create]
+  end
+
   root 'application#index'
 
 end

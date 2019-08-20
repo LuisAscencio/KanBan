@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
 
     def index
         @milestones = Milestone.all
+        @user_tasks = current_user.tasks
     end
     
 
