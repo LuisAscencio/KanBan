@@ -12,31 +12,31 @@
 <div class="mx-auto index-cta-container">
      <div class="row">
     <div class="col">
-      <div class="mx-auto card text-white bg-primary mb-3 ms-card" style="max-width: 24rem;">
+      <div class="mx-auto card text-white bg-primary mb-3 ms-card" style="max-width: 24rem; height: 300px;">
   <div class="card-header"><%= milestone_incomplete_count %> milestones to complete. </div>
   <div class="card-body">
     <h5 class="card-title">M I L E S T O N E S</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">A milestone is an overarching goal. To complete a milestone, you must first complete all of the Milestone's associated tasks and subtasks.</p>
     <%= link_to  "View Your Milestones >>", milestones_path, class: "card-link" %>
   </div>
 </div>
     </div>
     <div class="col">
-      <div class="mx-auto card text-white bg-info mb-3" style="max-width: 24rem;">
+      <div class="mx-auto card text-white bg-info mb-3" style="max-width: 24rem; height: 300px;">
   <div class="card-header"><%= task_incomplete_count %> tasks to complete.</div>
   <div class="card-body">
     <h5 class="card-title">T A S K S</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">After creating a milestone, you will be prompted to create tasks for that milestone. Define your tasks as a step you would have to take to complete milestone.</p>
     <%= link_to  "View Your Tasks >>", tasks_path, class: "card-link" %>    
   </div>
 </div>
     </div>
     <div class="col">
-      <div class="mx-auto card text-white bg-dark mb-3" style="max-width: 24rem;">
+      <div class="mx-auto card text-white bg-dark mb-3" style="max-width: 24rem; height: 300px;">
   <div class="card-header"><%= subtask_incomplete_count %> subtasks to complete.</div>
   <div class="card-body">
     <h5 class="card-title">S U B T A S K S</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">A subtask is a child of your task. Subtasks are for quick bulletpoint to-do's to accomplish a task.</p>
     <%= link_to  "View Your Subtasks >>", subtasks_path, class: "card-link" %>
     
   </div>
