@@ -110,8 +110,11 @@ input[type="radio"] {
   width: 50em;
 }
 
-.test {
-  color: #4db8cb;
+.index-intro-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  margin-bottom: 3em;
+  margin-top: 3em;
 }
 
 @media (max-width: 1200px) {
