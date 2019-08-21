@@ -18,7 +18,7 @@
 
 
 
-<% if current_user.tasks.count > 1 %>
+<% if current_user.tasks.count > 0 %>
  <% @user_tasks.each do |t| %>
 <div class="card subtask-container">
   <h5 class="card-header" 

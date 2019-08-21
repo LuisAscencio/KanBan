@@ -13,7 +13,7 @@
     <h3><%= current_user.tasks.count >= 1 ? "S U B T A S K S" : "Please add some Subtasks"  %> </h3>
 </div>
 
-<% if current_user.tasks.count > 1 %>
+<% if current_user.tasks.count > 0 %>
 
 <% @user_subtasks.each do |subtask| %>   
 <div class="card subtask-container">
