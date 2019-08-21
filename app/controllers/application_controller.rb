@@ -21,19 +21,19 @@ class ApplicationController < ActionController::Base
     end
 
     def subtask_incomplete_count
-       Subtask.where(completed?: false).count
+       current_user.subtasks.where(completed?: false).count
     end
 
      def task_incomplete_count
-       Task.where(completed?: false).count
+       current_user.tasks.where(completed?: false).count
     end
 
     def task_complete_count
-       Task.where(completed?: true).count
+       current_user.tasks.where(completed?: true).count
     end
 
      def milestone_incomplete_count
-       Milestone.where(completed?: false).count
+       current_user.milestones.where(completed?: false).count
     end
     
     helper_method :current_user, :subtask_incomplete_count, :task_incomplete_count, :milestone_incomplete_count, :task_complete_count
