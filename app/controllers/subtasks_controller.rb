@@ -41,7 +41,7 @@ class SubtasksController < ApplicationController
         @subtask = Task.find(params[:task_id]).subtasks.find(params[:subtask_id])
         @subtask = Subtask.find(params[:subtask_id])
         @subtask.update(completed?: true)
-        redirect_to tasks_subtasks_path(@subtask.task_id)
+        redirect_to task_subtasks_path(@subtask.task_id)
         
     end
 

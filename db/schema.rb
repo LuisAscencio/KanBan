@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_195847) do
+ActiveRecord::Schema.define(version: 2019_08_21_151502) do
 
   create_table "milestones", force: :cascade do |t|
     t.string "title"
     t.string "category"
-    t.boolean "completed?"
+    t.boolean "completed?", default: false
     t.string "due_date"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_08_15_195847) do
 
   create_table "subtasks", force: :cascade do |t|
     t.string "title"
-    t.boolean "completed?"
+    t.boolean "completed?", default: false
     t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_08_15_195847) do
     t.string "title"
     t.string "priority"
     t.string "due_date"
-    t.boolean "completed?"
+    t.boolean "completed?", default: false
     t.integer "milestone_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
