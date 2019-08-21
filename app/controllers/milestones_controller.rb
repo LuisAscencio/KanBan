@@ -5,6 +5,7 @@ class MilestonesController < ApplicationController
     def index
         @milestones = Milestone.all
         @user_milestones = current_user.milestones
+        milestone_completed
     end
 
     def new
@@ -20,11 +21,13 @@ class MilestonesController < ApplicationController
             flash[:errors] = @milestone.errors.full_messages
             redirect_to new_milestone_path
         end
+
     end
 
     def edit
         @milestone = Milestone.find(params[:id])
     end
+  
 
     def update
          @milestone = Milestone.find(params[:id])
@@ -36,10 +39,10 @@ class MilestonesController < ApplicationController
          redirect_to edit_milestone_path
         end
     end
-
+    
    def show
        @milestone = Milestone.find(params[:id])
-       @task = Task.new
+        @task = Task.new
    end
 
    def destroy
@@ -47,6 +50,22 @@ class MilestonesController < ApplicationController
        @milestone.destroy
         redirect_to milestones_path
    end
+
+   def milestone_completed
+        @milestone = Milestone.all
+        @milestone.each do |milestone|
+            milestone.tasks.each do |task|
+            if task.completed? == true
+                milestone.update(completed?: true)
+            elsif task.completed? == false
+                milestone.update(completed?: false)
+                flash[:error] = "You have some subtasks to complete!"
+            end
+         end
+      end
+    end
+
+    helper_method :milestone_completed
    
     
     private

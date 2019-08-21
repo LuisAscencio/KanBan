@@ -3,6 +3,7 @@ class TasksController < ApplicationController
     def index
         @tasks = Task.all
         @user_tasks = current_user.tasks
+        completed
     end
 
     def new
@@ -41,6 +42,22 @@ class TasksController < ApplicationController
     def show
         @task = Task.find(params[:id])
     end
+
+    def completed
+        @task = Task.all
+        @task.each do |task|
+            task.subtasks.each do |subtask|
+            if subtask.completed? == true
+                task.update(completed?: true)
+            elsif subtask.completed? == false
+                task.update(completed?: false)
+                flash[:error] = "You have some subtasks to complete!"
+            end
+         end
+      end
+    end
+
+    helper_method :completed
     
 private
 

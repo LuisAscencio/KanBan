@@ -43,6 +43,11 @@
         <div><input type="checkbox"  name="completed?" value="completed?"> Task completed?</div>
     <% end %>
     <p class="card-text"><% t.completed?%></p>
+    <% if flash[:errors] %>
+       <% flash[:errors].each do |error| %>
+       <p><%= error %></p>
+       <% end %>
+    <% end %>
     <%= link_to  "View Task", task_path(t.id), method: "get", class: "btn btn-primary" %>
   </div>
 </div>

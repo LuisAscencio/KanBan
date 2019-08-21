@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/complete' => 'subtasks#complete'
 
+
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
   resources :milestones, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :tasks, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :subtasks, only: [:index, :show, :new, :create, :edit, :update, :destroy, :complete]
 
   resources :milestones do 
-    resources :tasks, only: [:index, :show, :new, :create]
+    resources :tasks
   end
 
   resources :tasks do 
