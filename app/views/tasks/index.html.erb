@@ -41,7 +41,7 @@
     <% if t.completed? %>
     <div><input type="checkbox"  disabled checked name="completed?" value="completed?"> Task completed?</div>
     <% else %>
-        <div><input type="checkbox"  name="completed?" value="completed?"> Task completed?</div>
+        <div><input type="checkbox"  name="completed?" value="completed?" disabled> Task completed?</div>
     <% end %>
     <p class="card-text"><% t.completed?%></p>
     <% if flash[:errors] %>

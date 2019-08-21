@@ -79,7 +79,7 @@ input[type="radio"] {
 }
 
 .nav-link {
-  color: #ee6c6c;
+  color: #000000;
   font-weight: 800;
 }
 
@@ -108,6 +108,10 @@ input[type="radio"] {
   margin-left: 1em;
   margin-right: 1em;
   width: 50em;
+}
+
+.test {
+  color: #4db8cb;
 }
 
 @media (max-width: 1200px) {

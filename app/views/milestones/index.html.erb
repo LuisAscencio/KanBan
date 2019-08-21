@@ -21,15 +21,51 @@
 <% @user_milestones.each do |ms| %>
   <% if ms.completed? == false %>
 <div class="card subtask-container">
-  <h5 class="card-header"> <%=ms.category%></h5>
+  <div class="card-header" style="
+      <% case ms.category %>
+        <% when 'General' %>
+           <%= 'background-color: #85e0f0' %>
+        <% when 'Exercise' %>
+           <%= "background-color: #7cddee"%>
+        <% when 'Diet' %>
+           <%= 'background-color: #71d4e6'%>
+        <% when 'Career' %>
+           <%= 'background-color: #66cadc'%>
+       <% when 'Personal' %>
+           <%= 'background-color: #59bfd2'%>
+       <% when 'Other' %>
+           <%= 'background-color: #4db8cb'%>
+        <% end %>">
+     <div class="d-flex justify-content-between">
+        <h5 style="margin-top: 0.8em;"> <%=ms.category%></h5>
+          <img style="height: 40px; margin-top: 5px; width: auto;" src="
+        <% case ms.category %>
+        <% when 'General' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/general.png' %>
+        <% when 'Exercise' %>
+           <%= "http://plug.nyc/wp-content/uploads/2019/08/exercise.png"%>
+        <% when 'Diet' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/diet.png'%>
+        <% when 'Career' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/career.png'%>
+       <% when 'Personal' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/personal.png'%>
+       <% when 'Other' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/other.png'%>
+        <% end %>">
+    </div>
+  </div>
   <div class="card-body">
+ 
     <h5 class="card-title"><%= ms.title %></h5>
+    
+    
     <p class="card-text">Created: <%= ms.created_at.strftime("%m/%d/%Y")%></p>
     <p class="card-text">Due: <%= ms.due_date%></p>
     <% if ms.completed? %>
     <div><input type="checkbox"  disabled checked name="completed?" value="completed?"> Task completed?</div>
     <% else %>
-        <div><input type="checkbox"  name="completed?" value="completed?"> Milestone completed?</div>
+        <div><input type="checkbox"  name="completed?" value="completed?" disabled> Milestone completed?</div>
     <% end %>
     <p class="card-text"><% ms.completed?%></p>
     <%= link_to  "View Milestone", milestone_path(ms.id), method: "get", class: "btn btn-primary" %>
