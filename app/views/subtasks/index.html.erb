@@ -33,8 +33,13 @@
     <h5 class="card-title"><%= subtask.title %></h5>
     <p class="card-text">Created: <%= subtask.created_at.strftime("%m-%d-%Y")%></p>
     <p class="card-text">Due: <%= subtask.created_at.strftime("%m-%d-%Y")%></p>
-    <%= link_to  "View Subtask", subtask_path(subtask.id), method: "get", class: "btn btn-primary" %>
+    <div class="d-flex justify-content-between"> 
+        <%= link_to  "View Subtask", subtask_path(subtask.id), method: "get", class: "btn btn-primary" %>
+        <%= link_to  "Complete", task_subtask_complete_path(subtask_id: subtask.id), method: "patch", value: true, class: "btn btn-success" %>
+    </div>
+
   </div>
+  
 </div>
   <% end %>
 <% end %>   

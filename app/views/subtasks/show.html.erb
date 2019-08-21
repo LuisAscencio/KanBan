@@ -13,16 +13,16 @@
   <div class="card-body">
     <h5 class="card-title"><%= @subtask.title %></h5>
 
-    <%= link_to  "View Subtasks >>", subtasks_path, class: "card-link" %>
+    <%= button_to  "Edit", edit_subtask_path(@subtask), method: "get", class: "btn btn-secondary", style: "width: 6em;" %>
   </div>
 </div>
 
 <div class="mx-auto show-container" style="width: 500px;">
 
     <div class="d-flex justify-content-between">
-    <%= button_to  "Add Subtask", new_subtask_path(@task, @subtask), method: 'get', :class => "btn btn-primary" %>
-    <%= button_to  "Edit", edit_subtask_path(@subtask), method: "get", class: "btn btn-secondary", style: "width: 6em;" %>
-    <%= button_to 'Delete Task', subtask_path(@subtask), method: 'delete', class: "btn btn-danger" %>
+      <%= button_to  "Complete", task_subtask_complete_path, method: 'patch', value: "true", class: "btn btn-success", style: "width: 6em;" %>
+      <%= button_to  "Add Subtask", new_subtask_path(@task, @subtask), method: 'get', :class => "btn btn-primary" %>
+      <%= button_to 'Delete Subtask', subtask_path(@subtask), method: 'delete', class: "btn btn-danger" %>
     </div>
     <br>
     <%= link_to  "Back to Tasks", root_path %> 
