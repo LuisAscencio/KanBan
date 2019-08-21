@@ -16,7 +16,7 @@
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Category</label>
   </div>
-<%= f.select :category, ["General", "Exercise", "Diet", "Career", "Other"],  {}, class: "custom-select" %></div>
+<%= f.select :category, ["General", "Exercise", "Diet", "Career", "Personal", "Other"],  {}, class: "custom-select" %></div>
 
 <div class="form-group">
 <%= f.hidden_field :user_id, :value => current_user.id %>

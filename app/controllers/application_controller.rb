@@ -19,8 +19,11 @@ class ApplicationController < ActionController::Base
         @milestones = Milestone.all
         @user_tasks = current_user.tasks
     end
-    
 
-    helper_method :current_user
+    def subtask_incomplete_count
+       Subtask.where(completed?: false).count
+    end
+    
+    helper_method :current_user, :subtask_incomplete_count
 
 end
