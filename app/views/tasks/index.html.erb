@@ -22,18 +22,37 @@
  <% @user_tasks.each do |t| %>
    <% if t.completed? == false %>
 <div class="card subtask-container">
-  <h5 class="card-header" 
-  style="
-        <% case t.priority %>
-        <% when 'Low' %>
-           <%= 'background-color: #70f4b6' %>
-        <% when 'Medium' %>
-           <%= "background-color: #ccf470"%>
-        <% when 'High' %>
-           <%= 'background-color: #ee6c6c'%>
-        <% end %> ">
+   <div class="card-header" style="
+         <% case t.priority %>
+         <% when 'Low' %>
+            <%= 'background-color: #70f4b6' %>
+         <% when 'Medium' %>
+            <%= "background-color: #ccf470"%>
+         <% when 'High' %>
+            <%= 'background-color: #ee6c6c'%>
+         <% end %> " >
+      <div class="d-flex justify-content-between">
+        <h5 style="margin-top: 0.8em;"><%= t.priority %></h5>
+        <img style="height: 40px; margin-top: 5px; width: auto;" src="
+        <% case t.milestone.category %>
+        <% when 'General' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/general.png' %>
+        <% when 'Exercise' %>
+           <%= "http://plug.nyc/wp-content/uploads/2019/08/exercise.png"%>
+        <% when 'Diet' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/diet.png'%>
+        <% when 'Career' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/career.png'%>
+       <% when 'Personal' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/personal.png'%>
+       <% when 'Other' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/other.png'%>
+        <% end %>">
+         
+      </div>   
+   
+</div>
   
-  <%= t.priority %></h5>
   <div class="card-body">
     <h5 class="card-title"><%= t.title %></h5>
     <p class="card-text">Created: <%= t.created_at.strftime("%m/%d/%Y")%></p>
