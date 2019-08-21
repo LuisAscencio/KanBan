@@ -19,6 +19,7 @@
 <% if current_user.milestones.count > 0 %>
 
 <% @user_milestones.each do |ms| %>
+  <% if ms.completed? == false %>
 <div class="card subtask-container">
   <h5 class="card-header"> <%=ms.category%></h5>
   <div class="card-body">
@@ -31,9 +32,9 @@
         <div><input type="checkbox"  name="completed?" value="completed?"> Milestone completed?</div>
     <% end %>
     <p class="card-text"><% ms.completed?%></p>
-    <%= link_to  "View Task", milestone_path(ms.id), method: "get", class: "btn btn-primary" %>
+    <%= link_to  "View Milestone", milestone_path(ms.id), method: "get", class: "btn btn-primary" %>
   </div>
 </div>
-
+    <% end %>
    <% end %>
-     <% end %>
+<% end %>

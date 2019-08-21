@@ -13,7 +13,7 @@
      <div class="row">
     <div class="col">
       <div class="mx-auto card text-white bg-primary mb-3 ms-card" style="max-width: 24rem;">
-  <div class="card-header"><%= current_user.milestones.count %> milestones to complete. </div>
+  <div class="card-header"><%= milestone_incomplete_count %> milestones to complete. </div>
   <div class="card-body">
     <h5 class="card-title">M I L E S T O N E S</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -23,7 +23,7 @@
     </div>
     <div class="col">
       <div class="mx-auto card text-white bg-info mb-3" style="max-width: 24rem;">
-  <div class="card-header"><%= current_user.tasks.count %> tasks to complete.</div>
+  <div class="card-header"><%= task_incomplete_count %> tasks to complete.</div>
   <div class="card-body">
     <h5 class="card-title">T A S K S</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
