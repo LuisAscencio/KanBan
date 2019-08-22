@@ -5,15 +5,15 @@
            </div>
          <h1 class="display-4 header-welcome-text">Welcome <%= current_user.name.capitalize %></h1>
      </div> 
-        <p class="lead" style="padding: 1em;">You have <%= current_user.subtasks.count %> outstanding <%= current_user.subtasks.count == 1 ? "subtask" : "subtasks" %> to complete.</p>
+        <p class="lead" style="padding: 1em;">You have <%= subtask_incomplete_count %> outstanding <%= subtask_incomplete_count == 1 ? "subtask" : "subtasks" %> to complete.</p>
      <%= button_to  "Create a New Subtask", new_subtask_path, method: "get", class: "btn btn-primary" %>
 </div>
 
 <div class="mx-auto container-fluid" style="width: 350px; padding: 1em;" >
-    <h3><%= current_user.tasks.count >= 1 ? "S U B T A S K S" : "Please add some Subtasks"  %> </h3>
+    <h3><%= subtask_incomplete_count >= 1 ? "S U B T A S K S" : "Please add some Subtasks"  %> </h3>
 </div>
 
-<% if current_user.tasks.count > 0 %>
+<% if subtask_incomplete_count > 0 %>
 
 <% @user_subtasks.each do |subtask| %>  
   <% if subtask.completed? == false %>

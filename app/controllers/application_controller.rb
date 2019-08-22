@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
         @user_tasks = current_user.tasks
     end
 
+    def outstanding_items
+        subtask_incomplete_count + task_incomplete_count + milestone_incomplete_count
+    end
+
     def subtask_incomplete_count
        current_user.subtasks.where(completed?: false).count
     end
@@ -36,6 +40,6 @@ class ApplicationController < ActionController::Base
        current_user.milestones.where(completed?: false).count
     end
     
-    helper_method :current_user, :subtask_incomplete_count, :task_incomplete_count, :milestone_incomplete_count, :task_complete_count
+    helper_method :current_user, :subtask_incomplete_count, :task_incomplete_count, :milestone_incomplete_count, :task_complete_count, :outstanding_items
 
 end
