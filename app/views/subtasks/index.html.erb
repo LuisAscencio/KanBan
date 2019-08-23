@@ -9,8 +9,8 @@
      <%= button_to  "Create a New Subtask", new_subtask_path, method: "get", class: "btn btn-primary" %>
 </div>
 
-<div class="mx-auto container-fluid" style="width: 450px; padding: 1em;" >
-    <h3><%= subtask_incomplete_count >= 1 ? "S U B T A S K S" : "Please add some Subtasks"  %> </h3>
+<div class="mx-auto container-fluid" style="width: 300px;" >
+    <h3 class="align-text: center;"><%= subtask_incomplete_count >= 1 ? "S U B T A S K S" : "Please add some Subtasks"  %> </h3>
 </div>
 
 <% if subtask_incomplete_count > 0 %>

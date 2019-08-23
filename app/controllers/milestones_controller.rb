@@ -51,11 +51,20 @@ class MilestonesController < ApplicationController
         redirect_to milestones_path
    end
 
+   def complete
+        @milestone = Milestone.find(params[:id])
+        @milestone.update(completed?: true)
+        if @milestone.tasks.count > 0
+            @task.subtasks.destroy_all
+        end
+        redirect_to root_path
+    end
+
     def milestone_completed
         @milestones = current_user.milestones
         @milestones.each do |milestone|
-            if milestone.tasks.all?(completed?: true)
-                milestone.update(completed?: true)
+            if milestone.tasks.count == 0
+                milestone.destroy
             else
                 flash[:error] = "You have some subtasks to complete!"
             end

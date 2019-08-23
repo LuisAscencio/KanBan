@@ -68,7 +68,10 @@
        <p><%= error %></p>
        <% end %>
     <% end %>
+    <div class="d-flex justify-content-between">
     <%= link_to  "View Task", task_path(t.id), method: "get", class: "btn btn-primary" %>
+
+   </div>
   </div>
 </div>
    <% end %>

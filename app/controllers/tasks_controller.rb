@@ -3,7 +3,6 @@ class TasksController < ApplicationController
     def index
         @tasks = Task.all
         @user_tasks = current_user.tasks
-        completed
     end 
 
     def new
@@ -44,15 +43,13 @@ class TasksController < ApplicationController
     end
 
 
-    def completed
-        @tasks = current_user.tasks
-        @tasks.each do |task|
-            if task.subtasks.all?(completed?: true)
-                task.update(completed?: true)
-            else
-                flash[:error] = "You have some subtasks to complete!"
-            end
-         end
+    def complete
+        @task = Task.find(params[:task_id])
+        @task.update(completed?: true)
+        if @task.subtasks.count > 0
+            @task.subtasks.destroy_all
+        end
+        redirect_to root_path
     end
 
     def destroy

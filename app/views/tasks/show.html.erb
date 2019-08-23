@@ -13,15 +13,19 @@
   <div class="card-body">
     <h5 class="card-title"><%= @task.title.capitalize %></h5>
     <p class="card-text"><%= @task.due_date %></p>
-    <%= link_to  "View Subtasks >>", task_subtasks_path(@task.id), class: "card-link" %>
+    <div class="d-flex justify-content-between">
+      <%= button_to  "Edit", edit_task_path(@task), method: "get", class: "btn btn-secondary", style: "width: 6em;" %>
+      <%= link_to  "View Subtasks >>", task_subtasks_path(@task.id), class: "card-link" %>
+    </div>
+    
   </div>
 </div>
 
 <div class="mx-auto show-container" style="width: 500px;">
 
     <div class="d-flex justify-content-between">
+    <%= button_to  "Complete", milestone_task_complete_path(milestone_id: @task.milestone.id, task_id: @task.id), method: 'patch', value: "true", class: "btn btn-success", style: "width: 6em;" %>
     <%= button_to  "Add Subtask", new_task_subtask_path(@task, @subtask), method: 'get', :class => "btn btn-primary" %>
-    <%= button_to  "Edit", edit_task_path(@task), method: "get", class: "btn btn-secondary", style: "width: 6em;" %>
     <%= button_to 'Delete Task', task_path(@task), method: 'delete', class: "btn btn-danger" %>
     </div>
     <br>
