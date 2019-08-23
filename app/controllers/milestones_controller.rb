@@ -51,18 +51,15 @@ class MilestonesController < ApplicationController
         redirect_to milestones_path
    end
 
-   def milestone_completed
-        @milestone = Milestone.all
-        @milestone.each do |milestone|
-            milestone.tasks.each do |task|
-            if task.completed? == true
+    def milestone_completed
+        @milestones = current_user.milestones
+        @milestones.each do |milestone|
+            if milestone.tasks.all?(completed?: true)
                 milestone.update(completed?: true)
-            elsif task.completed? == false
-                milestone.update(completed?: false)
+            else
                 flash[:error] = "You have some subtasks to complete!"
             end
          end
-      end
     end
 
     helper_method :milestone_completed

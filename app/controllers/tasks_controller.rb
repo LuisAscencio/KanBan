@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     def create 
         @task = Task.create(task_params)
         if @task.valid?
-            redirect_to tasks_path
+            redirect_to new_task_subtask_path(@task.id)
         else
             flash[:errors] = @task.errors.full_messages
             redirect_to new_task_path
@@ -43,18 +43,16 @@ class TasksController < ApplicationController
         @task = Task.find(params[:id])
     end
 
+
     def completed
-        @task = Task.all
-        @task.each do |task|
-            task.subtasks.each do |subtask|
-            if subtask.completed? == true
+        @tasks = current_user.tasks
+        @tasks.each do |task|
+            if task.subtasks.all?(completed?: true)
                 task.update(completed?: true)
-            elsif subtask.completed? == false
-                task.update(completed?: false)
+            else
                 flash[:error] = "You have some subtasks to complete!"
             end
          end
-      end
     end
 
     def destroy
