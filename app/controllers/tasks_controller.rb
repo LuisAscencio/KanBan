@@ -4,7 +4,7 @@ class TasksController < ApplicationController
         @tasks = Task.all
         @user_tasks = current_user.tasks
         completed
-    end
+    end 
 
     def new
         @task = Task.new

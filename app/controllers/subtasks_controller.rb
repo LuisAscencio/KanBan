@@ -42,14 +42,20 @@ class SubtasksController < ApplicationController
         @subtask = Subtask.find(params[:subtask_id])
         @subtask.update(completed?: true)
         redirect_to task_subtasks_path(@subtask.task_id)
-        
+ 
     end
 
 
     def show
         @subtask = Subtask.find(params[:id])
-
     end
+
+    def destroy
+        @subtask = Subtask.find(params[:id])
+        @subtask.destroy
+            redirect_to subtasks_path
+    end
+    
 
     private
 

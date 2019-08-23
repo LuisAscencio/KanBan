@@ -6,7 +6,7 @@
 
     <%= form_for(@subtask, class: "mx-auto") do |f| %>   
         <div class="form-group">
-          <%= f.text_field :title, :placeholder => "What do you want to accomplish?", :class => "form-control"%>
+          <%= f.text_field :title, :placeholder => "How can you breakdown your task down into smaller steps?", :class => "form-control"%>
         </div>
         <%= f.hidden_field :completed?, :value => false %>
 

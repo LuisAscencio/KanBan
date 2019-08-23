@@ -20,7 +20,7 @@
 <div class="mx-auto show-container" style="width: 500px;">
 
     <div class="d-flex justify-content-between">
-      <%= button_to  "Complete", task_subtask_complete_path, method: 'patch', value: "true", class: "btn btn-success", style: "width: 6em;" %>
+      <%= button_to  "Complete", task_subtask_complete_path(task_id: @subtask.task.id, subtask_id: @subtask.id), method: 'patch', value: "true", class: "btn btn-success", style: "width: 6em;" %>
       <%= button_to  "Add Subtask", new_subtask_path(@task, @subtask), method: 'get', :class => "btn btn-primary" %>
       <%= button_to 'Delete Subtask', subtask_path(@subtask), method: 'delete', class: "btn btn-danger" %>
     </div>

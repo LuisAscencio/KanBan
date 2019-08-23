@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
     def index
         @milestones = Milestone.all
         @user_tasks = current_user.tasks
+        milestone_completed
+        completed
     end
 
     def outstanding_items
@@ -39,7 +41,29 @@ class ApplicationController < ActionController::Base
      def milestone_incomplete_count
        current_user.milestones.where(completed?: false).count
     end
+
+    def milestone_completed
+        @milestones = current_user.milestones
+        @milestones.each do |milestone|
+            if milestone.tasks.all?(completed?: true)
+                milestone.update(completed?: true)
+            else
+                flash[:error] = "You have some subtasks to complete!"
+            end
+         end
+    end
+
+    def completed
+        @tasks = current_user.tasks
+        @tasks.each do |task|
+            if task.subtasks.all?(completed?: true)
+                task.update(completed?: true)
+            else
+                flash[:error] = "You have some subtasks to complete!"
+            end
+         end
+    end
     
-    helper_method :current_user, :subtask_incomplete_count, :task_incomplete_count, :milestone_incomplete_count, :task_complete_count, :outstanding_items
+    helper_method :current_user, :subtask_incomplete_count, :task_incomplete_count, :milestone_incomplete_count, :task_complete_count, :outstanding_items, :milestone_completed, :completed
 
 end
