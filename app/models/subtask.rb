@@ -1,8 +1,7 @@
 class Subtask < ApplicationRecord
   belongs_to :task
   
-  #validations
-  validates :title, uniqueness: true  
+  #validations 
 
 
 end

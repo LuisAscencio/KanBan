@@ -11,7 +11,7 @@
       <div class="mx-auto card text-white bg-primary mb-3 ms-card" style="max-width: 31rem;">
   <div class="card-header"><%= @task.priority %> </div>
   <div class="card-body">
-    <h5 class="card-title"><%= @task.title %></h5>
+    <h5 class="card-title"><%= @task.title.capitalize %></h5>
     <p class="card-text"><%= @task.due_date %></p>
     <%= link_to  "View Subtasks >>", task_subtasks_path(@task.id), class: "card-link" %>
   </div>

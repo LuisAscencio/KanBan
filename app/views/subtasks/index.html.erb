@@ -9,7 +9,7 @@
      <%= button_to  "Create a New Subtask", new_subtask_path, method: "get", class: "btn btn-primary" %>
 </div>
 
-<div class="mx-auto container-fluid" style="width: 350px; padding: 1em;" >
+<div class="mx-auto container-fluid" style="width: 450px; padding: 1em;" >
     <h3><%= subtask_incomplete_count >= 1 ? "S U B T A S K S" : "Please add some Subtasks"  %> </h3>
 </div>
 
@@ -49,7 +49,7 @@
    
   </div>
   <div class="card-body">
-    <h5 class="card-title"><%= subtask.title %></h5>
+    <h5 class="card-title"><%= subtask.title.capitalize %></h5>
     <p class="card-text">Created: <%= subtask.created_at.strftime("%m-%d-%Y")%></p>
     <p class="card-text">Due: <%= subtask.created_at.strftime("%m-%d-%Y")%></p>
     <div class="d-flex justify-content-between"> 

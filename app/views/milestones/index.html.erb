@@ -12,7 +12,7 @@
 
  <br>
 
-<div class="mx-auto container-fluid" style="width: 350px; padding: 1em;" >
+<div class="mx-auto container-fluid" style="width: 400px; padding: 1em;" >
     <h3><%= milestone_incomplete_count >= 1 ? "M I L E S T O N E S" : "Please add some Milestones"  %> </h3>
 </div>
 
@@ -57,7 +57,7 @@
   </div>
   <div class="card-body">
  
-    <h5 class="card-title"><%= ms.title %></h5>
+    <h5 class="card-title"><%= ms.title.capitalize %></h5>
     
     
     <p class="card-text">Created: <%= ms.created_at.strftime("%m/%d/%Y")%></p>

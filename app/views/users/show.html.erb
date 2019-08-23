@@ -1,4 +1,15 @@
-<h1><%= @user.name %></h1>
-<h3>@<%= @user.username %> </h3> 
+ <div class="jumbotron">
+    <div class="d-flex">
+         <div class="image-cropper">
+             <img src="http://tinygraphs.com/squares/#{current_user.name}" class="index-user-prof-pic" alt="">  
+         </div>
+      <h1 class="display-4" style="margin-left: 10px; margin-top: 20px; margin-bottom: 10px;">Welcome <%= current_user.name.capitalize %></h1>  
+    </div>
+         <p class="lead" style="padding: 1em;">You have <%= milestone_incomplete_count %> outstanding <%= milestone_incomplete_count < 2 ? "milestone" : "milestones"  %>  to complete.</p> 
+ </div> 
 
-<%= link_to  "Back to Home", root_path %>
+
+
+ 
+
+ 

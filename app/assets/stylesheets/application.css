@@ -23,19 +23,28 @@ body {
   width: auto;
 }
 
+.image-cropper-nav {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.index-user-prof-pic-nav {
+  display: inline;
+  margin: 0 auto;
+  margin-left: 0%;
+  height: 100%;
+  width: auto;
+}
+
 .nav-logo {
   height: 75px;
   width: auto;
 }
 
 .jumbotron {
-  /* background-image: url("http://plug.nyc/wp-content/uploads/2019/08/rising-sun.svg");
-  background-size: cover;
-  background-position-y: -500px;
-  background-position-x: -200px;
-  overflow: hidden;
-  height: 130%;
-  width: 130%; */
   background-image: linear-gradient(
     to bottom right,
     #f8f9fa,
@@ -110,11 +119,23 @@ input[type="radio"] {
   width: 50em;
 }
 
+.card-title {
+  font-weight: 700;
+}
+
+.card-text {
+  font-weight: 600;
+}
+
 .index-intro-text {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   margin-bottom: 3em;
   margin-top: 3em;
+}
+
+.dropdown-menu {
+  flex-direction: column;
 }
 
 @media (max-width: 1200px) {
@@ -152,5 +173,8 @@ input[type="radio"] {
     margin-left: 1em;
     margin-right: 1em;
     margin-top: 2em;
+  }
+  .lead {
+    font-size: 1.19rem;
   }
 }

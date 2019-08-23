@@ -11,7 +11,7 @@
       <div class="mx-auto card text-white bg-primary mb-3 ms-card" style="max-width: 31rem;">
   <div class="card-header"><%= @milestone.category %> </div>
   <div class="card-body">
-    <h5 class="card-title"><%= @milestone.title %></h5>
+    <h5 class="card-title"><%= @milestone.title.capitalize %></h5>
     <p class="card-text"><%= @milestone.due_date %></p>
     <%= link_to  "View Milestone's Tasks >>", milestone_tasks_path(@milestone), class: "card-link" %>
   </div>
@@ -29,5 +29,17 @@
 </div>   
 
 
-
+<% @milestone.tasks do |tasks| %>
+<div class="mx-auto index-cta-container">
+     <div class="row">
+    <div class="col">
+      <div class="mx-auto card text-white bg-primary mb-3 ms-card" style="max-width: 31rem;">
+  <div class="card-header"><%= tasks.priority %> </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= tasks.title.capitalize %></h5>
+    <p class="card-text"><%= tasks.due_date %></p>
+    <%= link_to  "View Milestone's Tasks >>", milestone_tasks_path(@milestone), class: "card-link" %>
+  </div>
+</div>
+<% end %>
 

@@ -10,10 +10,6 @@
  </div>
 
 
- <div class="mx-auto" style="width: 500px;">
-    <h4 class="index-intro-text">Kanban is a to-do app that forces you to break down large goals into smaller, more achievable steps.</h4>
- </div>
-
 <div class="mx-auto index-cta-container">
      <div class="row">
     <div class="col">
@@ -22,7 +18,7 @@
   <div class="card-body">
     <h5 class="card-title">M I L E S T O N E S</h5>
     <p class="card-text">A milestone is an overarching goal. To complete a milestone, you must first complete all of the Milestone's associated tasks and subtasks.</p>
-    <%= link_to  "View Your Milestones >>", milestones_path, class: "card-link" %>
+    <%= link_to  "View Your Milestones >>", '/#milestones', class: "card-link" %>
   </div>
 </div>
     </div>
@@ -31,8 +27,8 @@
   <div class="card-header"><%= task_incomplete_count %> tasks to complete.</div>
   <div class="card-body">
     <h5 class="card-title">T A S K S</h5>
-    <p class="card-text">After creating a milestone, you will be prompted to create tasks for that milestone. Define your tasks as a step you would have to take to complete milestone.</p>
-    <%= link_to  "View Your Tasks >>", tasks_path, class: "card-link" %>    
+    <p class="card-text">After creating a milestone, you will be prompted to create tasks for that milestone. Define your tasks as the steps you would have to take to complete milestone.</p>
+    <%= link_to  "View Your Tasks >>", '/#tasks', class: "card-link" %>    
   </div>
 </div>
     </div>
@@ -41,11 +37,198 @@
   <div class="card-header"><%= subtask_incomplete_count %> subtasks to complete.</div>
   <div class="card-body">
     <h5 class="card-title">S U B T A S K S</h5>
-    <p class="card-text">A subtask is a child of your task. Subtasks are for quick bulletpoint to-do's to accomplish a task.</p>
-    <%= link_to  "View Your Subtasks >>", subtasks_path, class: "card-link" %>
+    <p class="card-text">Subtasks are all of the small steps you can take each day towards completing your goals. To complete tasks and subtasks, you need to complete all of the associated subtasks</p>
+    <%= link_to  "View Your Subtasks >>", '/#subtasks', class: "card-link" %>
     
   </div>
 </div>
     </div>
   </div>
 </div>
+
+
+ <div class="container-fluid" style="width: 400px; padding: 1em;" id="milestones">
+    <h3 style="text-align: center; margin-top: 2em;"><%= milestone_incomplete_count >= 1 ? "M I L E S T O N E S" : "Please add some Milestones"  %> </h3>
+</div>
+
+<% if milestone_incomplete_count > 0 %>
+<% current_user.milestones.each do |ms| %>
+  <% if ms.completed? == false %>
+<div class="card subtask-container">
+  <div class="card-header" style="
+      <% case ms.category %>
+        <% when 'General' %>
+           <%= 'background-color: #85e0f0' %>
+        <% when 'Exercise' %>
+           <%= "background-color: #7cddee"%>
+        <% when 'Diet' %>
+           <%= 'background-color: #71d4e6'%>
+        <% when 'Career' %>
+           <%= 'background-color: #66cadc'%>
+       <% when 'Personal' %>
+           <%= 'background-color: #59bfd2'%>
+       <% when 'Other' %>
+           <%= 'background-color: #4db8cb'%>
+        <% end %>">
+     <div class="d-flex justify-content-between">
+        <h5 style="margin-top: 0.8em;"> <%=ms.category%></h5>
+          <img style="height: 40px; margin-top: 5px; width: auto;" src="
+        <% case ms.category %>
+        <% when 'General' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/general.png' %>
+        <% when 'Exercise' %>
+           <%= "http://plug.nyc/wp-content/uploads/2019/08/exercise.png"%>
+        <% when 'Diet' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/diet.png'%>
+        <% when 'Career' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/career.png'%>
+       <% when 'Personal' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/personal.png'%>
+       <% when 'Other' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/other.png'%>
+        <% end %>">
+    </div>
+  </div>
+  <div class="card-body">
+ 
+    <h5 class="card-title"><%= ms.title.capitalize %></h5>
+    
+    
+    <p class="card-text">Has <%= ms.tasks.count %> items to complete.</p>
+    <p class="card-text">Due: <%= ms.due_date%></p>
+    <% if ms.completed? %>
+    <div><input type="checkbox"  disabled checked name="completed?" value="completed?"> Task completed?</div>
+    <% else %>
+        <div><input type="checkbox"  name="completed?" value="completed?" disabled> Milestone completed?</div>
+    <% end %>
+    <p class="card-text"><% ms.completed?%></p>
+    <%= link_to  "View Milestone", milestone_path(ms.id), method: "get", class: "btn btn-primary" %>
+  </div>
+</div>
+    <% end %>
+   <% end %>
+<% end %>
+
+
+
+
+<div class="mx-auto container-fluid" style="width: 450px; padding: 1em; margin-bottom: 0; margin-top: 2em;" id="tasks">
+    <h3 style="text-align: center;"><%= task_incomplete_count >= 1 ? "T A S K S" : "All Tasks Complete!"  %> </h3>
+</div>
+
+
+
+<% if task_incomplete_count > 0 %>
+ <% current_user.tasks.each do |t| %>
+   <% if t.completed? == false %>
+<div class="card subtask-container">
+   <div class="card-header" style="
+         <% case t.priority %>
+         <% when 'Low' %>
+            <%= 'background-color: #70f4b6' %>
+         <% when 'Medium' %>
+            <%= "background-color: #ccf470"%>
+         <% when 'High' %>
+            <%= 'background-color: #ee6c6c'%>
+         <% end %> " >
+      <div class="d-flex justify-content-between">
+        <h5 style="margin-top: 0.8em;"><%= t.priority %></h5>
+        <img style="height: 40px; margin-top: 5px; width: auto;" src="
+        <% case t.milestone.category %>
+        <% when 'General' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/general.png' %>
+        <% when 'Exercise' %>
+           <%= "http://plug.nyc/wp-content/uploads/2019/08/exercise.png"%>
+        <% when 'Diet' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/diet.png'%>
+        <% when 'Career' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/career.png'%>
+       <% when 'Personal' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/personal.png'%>
+       <% when 'Other' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/other.png'%>
+        <% end %>">
+         
+      </div>   
+   
+</div>
+  
+  <div class="card-body">
+    <h5 class="card-title"><%= t.title.capitalize %></h5>
+    <p class="card-text">Has <%= t.subtasks.count %> <%= t.subtasks.count == 1 ? "subtask" : "subtasks"%> to complete.</p>
+    <p class="card-text">Due: <%= t.due_date%></p>
+    <% if t.completed? %>
+    <div><input type="checkbox"  disabled checked name="completed?" value="completed?"> Task completed?</div>
+    <% else %>
+        <div><input type="checkbox"  name="completed?" value="completed?" disabled> Task completed?</div>
+    <% end %>
+    <p class="card-text"><% t.completed?%></p>
+    <% if flash[:errors] %>
+       <% flash[:errors].each do |error| %>
+       <p><%= error %></p>
+       <% end %>
+    <% end %>
+    <%= link_to  "View Task", task_path(t.id), method: "get", class: "btn btn-primary" %>
+  </div>
+</div>
+   <% end %>
+  <% end %>
+<% end %>
+
+
+
+
+<div class="mx-auto container-fluid" style="width: 450px; padding: 1em;" id="subtasks">
+    <h3 style="text-align: center;"><%= subtask_incomplete_count >= 1 ? "S U B T A S K S" : "All Subtasks Complete!"  %> </h3>
+</div>
+
+<% if subtask_incomplete_count > 0 %>
+
+<% current_user.subtasks.each do |subtask| %>  
+  <% if subtask.completed? == false %>
+<div class="card subtask-container">
+   <div class="card-header" 
+      style="
+        <% case subtask.task.priority %>
+        <% when 'Low' %>
+           <%= 'background-color: #70f4b6' %>
+        <% when 'Medium' %>
+           <%= "background-color: #ccf470"%>
+        <% when 'High' %>
+           <%= 'background-color: #ee6c6c'%>
+        <% end %> ">
+    <div class="d-flex justify-content-between">
+       <h5 style="margin-top: 0.8em;"><%= subtask.task.priority %></h5>
+       <img style="height: 40px; margin-top: 5px; width: auto;" src="
+        <% case subtask.task.milestone.category %>
+        <% when 'General' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/general.png' %>
+        <% when 'Exercise' %>
+           <%= "http://plug.nyc/wp-content/uploads/2019/08/exercise.png"%>
+        <% when 'Diet' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/diet.png'%>
+        <% when 'Career' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/career.png'%>
+       <% when 'Personal' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/personal.png'%>
+       <% when 'Other' %>
+           <%= 'http://plug.nyc/wp-content/uploads/2019/08/other.png'%>
+        <% end %>">
+    </div>    
+   
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= subtask.title.capitalize %></h5>
+    <p class="card-text">Created: <%= subtask.created_at.strftime("%m-%d-%Y")%></p>
+    <p class="card-text">Due: <%= subtask.created_at.strftime("%m-%d-%Y")%></p>
+    <div class="d-flex justify-content-between"> 
+        <%= link_to  "View Subtask", subtask_path(subtask.id), method: "get", class: "btn btn-primary" %>
+        <%= link_to  "Complete", task_subtask_complete_path(task_id: subtask.task.id, subtask_id: subtask.id), method: "patch", value: true, class: "btn btn-success" %>
+    </div>
+
+  </div>
+  
+</div>
+    <% end %> 
+  <% end %>
+<% end %>  

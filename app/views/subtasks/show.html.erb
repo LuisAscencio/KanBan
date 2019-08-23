@@ -11,7 +11,7 @@
       <div class="mx-auto card text-white bg-primary mb-3 ms-card" style="max-width: 31rem;">
   <div class="card-header"><%= @subtask.task.priority %> </div>
   <div class="card-body">
-    <h5 class="card-title"><%= @subtask.title %></h5>
+    <h5 class="card-title"><%= @subtask.title.capitalize %></h5>
 
     <%= button_to  "Edit", edit_subtask_path(@subtask), method: "get", class: "btn btn-secondary", style: "width: 6em;" %>
   </div>

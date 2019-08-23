@@ -12,7 +12,7 @@
  <br>
 
 
-<div class="mx-auto container-fluid" style="width: 300px; padding: 1em; margin-bottom: 0;" >
+<div class="mx-auto container-fluid" style="width: 450px; padding: 1em; margin-bottom: 0;" >
     <h3 style="padding-left: 1.6em;"><%= task_incomplete_count >= 1 ? "T A S K S" : "Please add some Tasks"  %> </h3>
 </div>
 
@@ -54,8 +54,8 @@
 </div>
   
   <div class="card-body">
-    <h5 class="card-title"><%= t.title %></h5>
-    <p class="card-text">Created: <%= t.created_at.strftime("%m/%d/%Y")%></p>
+    <h5 class="card-title"><%= t.title.capitalize %></h5>
+    <p class="card-text">Has <%= t.subtasks.count %> subtasks to complete.</p>
     <p class="card-text">Due: <%= t.due_date%></p>
     <% if t.completed? %>
     <div><input type="checkbox"  disabled checked name="completed?" value="completed?"> Task completed?</div>

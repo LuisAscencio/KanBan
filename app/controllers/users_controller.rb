@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         if @user.valid?
             session[:user_id] = @user[:id] 
-            redirect_to root_path
+            redirect_to new_milestone_path
         else
             flash[:errors] = @user.errors.full_messages
             render 'users/new'
